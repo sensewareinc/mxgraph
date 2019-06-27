@@ -336,7 +336,7 @@ mxXmlRequest.prototype.send = function(onload, onerror, timeout, ontimeout)
 				}
 			});
 		}
-
+		this.async = true;
 		this.request.open(this.method, this.url, this.async,
 			this.username, this.password);
 		this.setRequestHeaders(this.request, this.params);
