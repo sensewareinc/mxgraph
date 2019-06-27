@@ -293,7 +293,7 @@ var mxClient =
 			link.setAttribute('type', 'text/css');
 			
 			var head = doc.getElementsByTagName('head')[0];
-	   		head.appendChild(link);
+	   		// head.appendChild(link);
 		}
 	},
 	
@@ -11136,7 +11136,7 @@ mxXmlRequest.prototype.send = function(onload, onerror, timeout, ontimeout)
 			this.request.ontimeout = ontimeout;
 		}
 				
-		this.request.send(this.params);
+		// this.request.send(this.params);
 	}
 };
 
@@ -52122,8 +52122,13 @@ mxGraphView.prototype.updateCellState = function(state)
 					}
 					else
 					{
-						state.origin.x += geo.x * pState.width / this.scale + offset.x;
-						state.origin.y += geo.y * pState.height / this.scale + offset.y;
+						if(typeof offset.attributes === 'undefined') {
+							state.origin.x += geo.x * pState.width / this.scale + offset.x;
+							state.origin.y += geo.y * pState.height / this.scale + offset.y;
+						} else {
+							state.origin.x += geo.x * pState.width / this.scale + parseInt(offset.attributes.x.value);
+							state.origin.y += geo.y * pState.height / this.scale + parseInt(offset.attributes.y.value);
+						}
 					}
 				}
 				else

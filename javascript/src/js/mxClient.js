@@ -293,7 +293,7 @@ var mxClient =
 			link.setAttribute('type', 'text/css');
 			
 			var head = doc.getElementsByTagName('head')[0];
-	   		head.appendChild(link);
+	   		// head.appendChild(link);
 		}
 	},
 	
